@@ -1,47 +1,13 @@
-'''Individual Programming Assignment 3
-
-70 points
-
-This assignment will develop your ability to manipulate data.
-'''
 
 def relationship_status(from_member, to_member, social_graph):
-    '''Relationship Status.
-    20 points.
-
-    Let us pretend that you are building a new app.
-    Your app supports social media functionality, which means that users can have
-    relationships with other users.
-
-    There are two guidelines for describing relationships on this social media app:
-    1. Any user can follow any other user.
-    2. If two users follow each other, they are considered friends.
-
-    This function describes the relationship that two users have with each other.
-
-    Please see "assignment-4-sample-data.py" for sample data. The social graph
-    will adhere to the same pattern.
-
-    Parameters
-    ----------
-    from_member: str
-        the subject member
-    to_member: str
-        the object member
-    social_graph: dict
-        the relationship data
-
-    Returns
-    -------
-    str
-        "follower" if fromMember follows toMember,
-        "followed by" if fromMember is followed by toMember,
-        "friends" if fromMember and toMember follow each other,
-        "no relationship" if neither fromMember nor toMember follow each other.
-    '''
-    # Replace `pass` with your code.
-    # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    if to_member in social_graph[from_member]['following'] and from_member in social_graph[to_member]['following']:
+        return "friends"
+    elif from_member in social_graph[to_member]['following']:
+        return "followed by"
+    elif to_member in social_graph[from_member]['following']:
+        return "follower"
+    else:
+        return "no relationship"
 
 
 def tic_tac_toe(board):
@@ -70,7 +36,28 @@ def tic_tac_toe(board):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    len_board = len(board[0])
+
+    diagonals = [[board[i][i] for i in range(len(board))], [board[i][len_board - i - 1] for i in range(len_board)]]
+    columns = []
+    for row_num in range(len_board):
+        columns.append([board[i][row_num] for i in range(len_board)])
+    print(columns)
+
+    dimensions = [diagonals, columns, board]
+
+    for dimension in dimensions:
+        print(f"NEW DIMENSION")
+        for _ in dimension:
+            win_ctr = 0
+            square_checker = _[0]
+            for square in _:
+                if square == square_checker:
+                    win_ctr += 1
+        if win_ctr == len_board:
+            return square_checker
+    return "NO WINNER"
+
 
 def eta(first_stop, second_stop, route_map):
     '''ETA.

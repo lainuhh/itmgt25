@@ -36,9 +36,6 @@ def vigenere_cipher(message, key):
     return encrypted_msg
 
 
-print(vigenere_cipher("A C", "KEY"))
-
-
 def scytale_cipher(message, shift):
     if len(message) % shift > 0:
         message += "_" * (shift - (len(message) % shift))
