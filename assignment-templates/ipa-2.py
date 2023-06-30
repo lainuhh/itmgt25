@@ -1,16 +1,14 @@
-alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
 
 def shift_letter(letter, shift):
-    new_position = (alphabet.find(letter.capitalize()) + shift) % 26
-    return alphabet[new_position]
+    new_position = (ord(letter.capitalize()) + shift) % 26
+    return chr(new_position)
 
 
 def caesar_cipher(message, shift):
     encrypted_msg = ''
     for character in message:
-        new_position = (alphabet.find(character.capitalize()) + shift) % 26
-        encrypted_msg += alphabet[new_position]
+        new_position = (ord(character.capitalize()) + shift) % 26
+        encrypted_msg += chr(new_position)
     return encrypted_msg
 
 
@@ -18,9 +16,9 @@ def shift_by_letter(letter, letter_shift):
     if letter == " ":
         shifted_letter = " "
     else:
-        shift_num = alphabet.find(letter_shift)
-        new_position = (alphabet.find(letter) + shift_num) % 26
-        shifted_letter = alphabet[new_position]
+        shift_num = ord(letter_shift.capitalize())
+        new_position = (ord(letter.capitalize()) + shift_num) % 26
+        shifted_letter = chr(new_position)
     return shifted_letter
 
 
@@ -31,8 +29,8 @@ def vigenere_cipher(message, key):
             encrypted_msg += " "
         else:
             key_index = i % len(key)
-            new_position = (alphabet.find(message[i].capitalize()) + alphabet.find(key[key_index])) % 26
-            encrypted_msg += alphabet[new_position]
+            new_position = (ord(message[i].capitalize()) + ord(key[key_index])) % 26
+            encrypted_msg += chr(new_position)
     return encrypted_msg
 
 
