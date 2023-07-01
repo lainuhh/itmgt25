@@ -26,9 +26,14 @@ def tic_tac_toe(board):
             for square in _:
                 if square == square_checker:
                     win_ctr += 1
-            if win_ctr == len_board:
+            if win_ctr == len_board and win_ctr != 0:
                 return square_checker
+            else:
+                return "NO_WINNER"
     return "NO WINNER"
+
+
+print(tic_tac_toe(""))
 
 
 def eta(first_stop, second_stop, route_map):
