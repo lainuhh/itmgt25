@@ -33,9 +33,6 @@ def tic_tac_toe(board):
     return "NO WINNER"
 
 
-print(tic_tac_toe(""))
-
-
 def eta(first_stop, second_stop, route_map):
     route = (first_stop, second_stop)
     if route in route_map:
