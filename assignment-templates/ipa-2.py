@@ -1,5 +1,7 @@
 
 def shift_letter(letter, shift):
+    if letter == " ":
+        return " "
     new_position = ((ord(letter) + (shift + 65)) % 26) + 65
     return chr(new_position)
 
@@ -7,8 +9,11 @@ def shift_letter(letter, shift):
 def caesar_cipher(message, shift):
     encrypted_msg = ''
     for character in message:
-        new_position = ((ord(character) + (shift + 65)) % 26) + 65
-        encrypted_msg += chr(new_position)
+        if character == " ":
+            encrypted_msg += " "
+        else:
+            new_position = ((ord(character) + (shift + 65)) % 26) + 65
+            encrypted_msg += chr(new_position)
     return encrypted_msg
 
 
