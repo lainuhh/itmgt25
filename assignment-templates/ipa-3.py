@@ -28,8 +28,6 @@ def tic_tac_toe(board):
                     win_ctr += 1
             if win_ctr == len_board and win_ctr != 0:
                 return square_checker
-            else:
-                return "NO WINNER"
     return "NO WINNER"
 
 

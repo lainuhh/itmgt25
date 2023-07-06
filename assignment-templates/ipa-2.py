@@ -61,4 +61,3 @@ def scytale_decipher(message, shift):
     for i in range(shift):
         decoded_message += message[i::shift]
     return decoded_message
-
